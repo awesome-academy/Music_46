@@ -1,7 +1,9 @@
-package com.example.themo.musicmarvelous;
+package com.example.themo.musicmarvelous.ui.main;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.themo.musicmarvelous.R;
 
 public class MainActivity extends AppCompatActivity {
 
