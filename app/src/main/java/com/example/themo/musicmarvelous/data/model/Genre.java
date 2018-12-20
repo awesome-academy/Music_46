@@ -12,20 +12,20 @@ public class Genre {
         mGenreImage = genreImage;
     }
 
-    public String getmGenreName() {
+    public String getGenreName() {
         return mGenreName;
     }
 
-    public void setmGenreName(String mGenreName) {
-        this.mGenreName = mGenreName;
+    public void setGenreName(String genreName) {
+        mGenreName = genreName;
     }
 
-    public int getmGenreImage() {
+    public int getGenreImage() {
         return mGenreImage;
     }
 
-    public void setmGenreImage(int mGenreImage) {
-        this.mGenreImage = mGenreImage;
+    public void setGenreImage(int genreImage) {
+        mGenreImage = genreImage;
     }
 
     public static class GenreEntity {

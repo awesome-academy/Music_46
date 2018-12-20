@@ -10,7 +10,7 @@ public class Track {
     private String mArtist;
     private boolean mIsDownloadable;
 
-    public Track(){
+    public Track() {
     }
 
     public Track(int mId, int mDuration, String mTitle, String mImageSong, String mDownloadUrl,
@@ -25,68 +25,68 @@ public class Track {
         this.mIsDownloadable = mIsDownloadable;
     }
 
-    public int getmId() {
+    public int getId() {
         return mId;
     }
 
-    public void setmId(int mId) {
-        this.mId = mId;
+    public void setId(int id) {
+        mId = id;
     }
 
-    public int getmDuration() {
+    public int getDuration() {
         return mDuration;
     }
 
-    public void setmDuration(int mDuration) {
-        this.mDuration = mDuration;
+    public void setDuration(int duration) {
+        mDuration = duration;
     }
 
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
-    public void setmTitle(String mTitle) {
-        this.mTitle = mTitle;
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
-    public String getmImageTrack() {
+    public String getImageTrack() {
         return mImageTrack;
     }
 
-    public void setmImageTrack(String mImageTrack) {
-        this.mImageTrack = mImageTrack;
+    public void setImageTrack(String imageTrack) {
+        mImageTrack = imageTrack;
     }
 
-    public String getmDownloadUrl() {
+    public String getDownloadUrl() {
         return mDownloadUrl;
     }
 
-    public void setmDownloadUrl(String mDownloadUrl) {
-        this.mDownloadUrl = mDownloadUrl;
+    public void setDownloadUrl(String downloadUrl) {
+        mDownloadUrl = downloadUrl;
     }
 
-    public String getmGenre() {
+    public String getGenre() {
         return mGenre;
     }
 
-    public void setmGenre(String mGenre) {
-        this.mGenre = mGenre;
+    public void setGenre(String genre) {
+        mGenre = genre;
     }
 
-    public String getmArtist() {
+    public String getArtist() {
         return mArtist;
     }
 
-    public void setmArtist(String mArtist) {
-        this.mArtist = mArtist;
+    public void setArtist(String artist) {
+        mArtist = artist;
     }
 
-    public boolean ismIsDownloadable() {
+    public boolean isDownloadable() {
         return mIsDownloadable;
     }
 
-    public void setmIsDownloadable(boolean mIsDownloadable) {
-        this.mIsDownloadable = mIsDownloadable;
+    public void setDownloadable(boolean downloadable) {
+        mIsDownloadable = downloadable;
     }
 
     public final class TrackEntity {
