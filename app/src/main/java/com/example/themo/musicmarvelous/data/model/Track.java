@@ -4,25 +4,102 @@ public class Track {
     private int mId;
     private int mDuration;
     private String mTitle;
-    private String mImageTrack;
+    private String mArtworkUrl;
     private String mDownloadUrl;
     private String mGenre;
     private String mArtist;
+    private String mDescription;
     private boolean mIsDownloadable;
+    private String mUri;
+    private String mPublisherAlbumTitle;
 
-    public Track() {
+    private Track(TrackBuilder builder) {
+        mId = builder.mId;
+        mDuration = builder.mDuration;
+        mTitle = builder.mTitle;
+        mArtworkUrl = builder.mArtworkUrl;
+        mDownloadUrl = builder.mDownloadUrl;
+        mGenre = builder.mGenre;
+        mArtist = builder.mArtist;
+        mDescription = builder.mDescription;
+        mIsDownloadable = builder.mIsDownloadable;
+        mUri = builder.mUri;
+        mPublisherAlbumTitle = builder.mPublisherAlbumTitle;
     }
 
-    public Track(int mId, int mDuration, String mTitle, String mImageSong, String mDownloadUrl,
-                 String mGenre, String mArtist, boolean mIsDownloadable) {
-        this.mId = mId;
-        this.mDuration = mDuration;
-        this.mTitle = mTitle;
-        this.mImageTrack = mImageSong;
-        this.mDownloadUrl = mDownloadUrl;
-        this.mGenre = mGenre;
-        this.mArtist = mArtist;
-        this.mIsDownloadable = mIsDownloadable;
+    public static class TrackBuilder {
+        public String mPublisherAlbumTitle;
+        private int mId;
+        private int mDuration;
+        private String mTitle;
+        private String mArtworkUrl;
+        private String mDownloadUrl;
+        private String mGenre;
+        private String mArtist;
+        private String mDescription;
+        private String mUri;
+        private boolean mIsDownloadable;
+
+        public TrackBuilder withId(int id) {
+            this.mId = id;
+            return this;
+        }
+
+        public TrackBuilder withDuration(int duration) {
+            this.mDuration = duration;
+            return this;
+        }
+
+        public TrackBuilder withTitle(String title) {
+            this.mTitle = title;
+            return this;
+        }
+
+        public TrackBuilder withArtworkUrl(String artworkUrl) {
+            this.mArtworkUrl = artworkUrl;
+            return this;
+        }
+
+        public TrackBuilder withDownloadUrl(String downloadUrl) {
+            this.mDownloadUrl = downloadUrl;
+            return this;
+        }
+
+        public TrackBuilder withGenre(String genre) {
+            this.mGenre = genre;
+            return this;
+        }
+
+        public TrackBuilder withArtist(String artist) {
+            this.mArtist = artist;
+            return this;
+        }
+
+        public TrackBuilder withDescription(String description) {
+            this.mDescription = description;
+            return this;
+        }
+
+        public TrackBuilder withDownloadable(boolean downloadable) {
+            this.mIsDownloadable = downloadable;
+            return this;
+        }
+
+        public TrackBuilder withUri(String uri) {
+            this.mUri = uri;
+            return this;
+        }
+
+        public TrackBuilder withPublisherAlbumTitle(String title) {
+            this.mPublisherAlbumTitle = title;
+            return this;
+        }
+
+        public Track build() {
+            return new Track(this);
+        }
+
+
     }
 
     public int getId() {
@@ -49,12 +126,12 @@ public class Track {
         mTitle = title;
     }
 
-    public String getImageTrack() {
-        return mImageTrack;
+    public String getArtworkUrl() {
+        return mArtworkUrl;
     }
 
-    public void setImageTrack(String imageTrack) {
-        mImageTrack = imageTrack;
+    public void setArtworkUrl(String artworkUrl) {
+        mArtworkUrl = artworkUrl;
     }
 
     public String getDownloadUrl() {
@@ -81,6 +158,14 @@ public class Track {
         mArtist = artist;
     }
 
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public void setDescription(String description) {
+        mDescription = description;
+    }
+
     public boolean isDownloadable() {
         return mIsDownloadable;
     }
@@ -89,14 +174,19 @@ public class Track {
         mIsDownloadable = downloadable;
     }
 
-    public final class TrackEntity {
-        public static final String ID = "id";
-        public static final String DURATION = "duration";
-        public static final String TITLE = "title";
-        public static final String IMAGE_TRACK = "artwork_url";
-        public static final String URL_DOWNLOAD = "download_url";
-        public static final String GENRE = "genre";
-        public static final String NAME_ARTIST = "label_name";
-        public static final String DOWNLOADABLE = "downloadable";
+    public String getUri() {
+        return mUri;
+    }
+
+    public void setUri(String uri) {
+        mUri = uri;
+    }
+
+    public String getPublisherAlbumTitle() {
+        return mPublisherAlbumTitle;
+    }
+
+    public void setPublisherAlbumTitle(String publisherAlbumTitle) {
+        mPublisherAlbumTitle = publisherAlbumTitle;
     }
 }
