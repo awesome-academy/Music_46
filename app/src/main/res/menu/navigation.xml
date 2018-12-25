@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_library_music"
         android:title="@string/title_library_music"/>
     <item
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
         android:title="@string/title_settings"/>
 </menu>

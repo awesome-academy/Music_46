@@ -19,9 +19,10 @@ public interface TrackDataSource {
     }
 
     interface LocalDataSource {
+        void getOfflineTracks(OnFetchDataListener<Track> listener);
     }
 
     interface RemoteDataSource {
-        void getTracksRemote(String genre, int limit, int offSet, OnFetchDataListener<Track> listener);
+        void getOnlineTracks(String genre, int limit, int offSet, OnFetchDataListener<Track> listener);
     }
 }
