@@ -7,9 +7,11 @@ import java.util.List;
 public interface HomeContract {
     interface Presenter {
         void loadGenres();
+        void loadSongsByGenre();
     }
 
     interface View {
         void showGenres(List<Genre> genres);
+        void showSongsByGenre();
     }
 }

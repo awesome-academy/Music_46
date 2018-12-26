@@ -7,47 +7,51 @@
     android:background="@color/color_yellow_light"
     tools:context=".ui.splash.SplashActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tool_bar"
+    <FrameLayout
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/color_yellow_dark">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/image_dehaze"
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dp_10"
-            android:paddingTop="@dimen/dp_5"
-            android:src="@drawable/ic_dehaze" />
+            android:background="@color/color_yellow_dark">
 
-        <TextView
-            android:id="@+id/text_toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/app_name"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/sp_20" />
+            <ImageView
+                android:id="@+id/image_dehaze"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_5"
+                android:src="@drawable/ic_dehaze" />
 
-        <ImageView
-            android:layout_width="@dimen/dp_32"
-            android:layout_height="@dimen/dp_32"
-            android:layout_marginLeft="@dimen/dp_150"
-            android:src="@drawable/ic_search" />
+            <TextView
+                android:id="@+id/text_toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_20" />
 
-    </android.support.v7.widget.Toolbar>
+            <ImageView
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
+                android:layout_marginLeft="@dimen/dp_170"
+                android:src="@drawable/ic_search" />
+
+        </android.support.v7.widget.Toolbar>
+    </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         app:itemBackground="@color/color_yellow_dark"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
-        app:menu="@menu/navigation">
-
-    </android.support.design.widget.BottomNavigationView>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation" />
 
 </android.support.constraint.ConstraintLayout>

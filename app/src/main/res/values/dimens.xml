@@ -7,4 +7,5 @@
     <dimen name="dp_5">5dp</dimen>
     <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_170">170dp</dimen>
 </resources>
