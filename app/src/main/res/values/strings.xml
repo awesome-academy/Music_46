@@ -5,5 +5,11 @@
     <string name="title_settings">Settings</string>
     <string name="action_search">Search</string>
     <string name="genre">Genre</string>
+    <string name="genre_all_music">All Music</string>
+    <string name="genre_all_audio">All Audio</string>
+    <string name="genre_alternative">Alternative</string>
+    <string name="genre_ambient">Ambient</string>
+    <string name="genre_country">Country</string>
+    <string name="genre_classical">Classical</string>
 
 </resources>
