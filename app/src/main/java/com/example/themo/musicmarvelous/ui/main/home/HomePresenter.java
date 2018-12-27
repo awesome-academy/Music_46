@@ -9,9 +9,9 @@ public class HomePresenter implements HomeContract.Presenter {
     private HomeContract.View mView;
     private GenreRepository mGenreRepository;
 
-    public HomePresenter(HomeContract.View view, GenreRepository instance) {
+    public HomePresenter(HomeContract.View view, GenreRepository genreRepository) {
         mView = view;
-        mGenreRepository = instance;
+        mGenreRepository = genreRepository;
     }
 
     @Override

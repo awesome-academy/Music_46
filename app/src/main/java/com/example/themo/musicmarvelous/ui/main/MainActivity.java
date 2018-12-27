@@ -5,14 +5,18 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.themo.musicmarvelous.R;
 import com.example.themo.musicmarvelous.ui.main.home.HomeFragment;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View {
+public class MainActivity extends AppCompatActivity implements MainContract.View,
+        BottomNavigationView.OnNavigationItemSelectedListener {
     private MainContract.Presenter mPresenter;
+    private ActionBar mActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,34 +32,45 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     public void initView() {
+        mActionBar = getSupportActionBar();
         loadFragment(new HomeFragment());
         BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(this);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            Fragment fragment;
-            switch (menuItem.getItemId()) {
-                case R.id.navigation_home:
-                    fragment = new HomeFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.navigation_music:
-                    return true;
-                case R.id.navigation_settings:
-                    return true;
-                default:
-                    break;
-            }
-            return false;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.navigation_home:
+                mActionBar.setTitle(R.string.title_home);
+                loadFragment(HomeFragment.newInstance());
+                return true;
+            case R.id.navigation_music:
+                mActionBar.setTitle(R.string.title_library_music);
+                return true;
+            case R.id.navigation_settings:
+                mActionBar.setTitle(R.string.title_settings);
+                return true;
+            default:
+                mActionBar.setTitle(R.string.title_home);
+                loadFragment(HomeFragment.newInstance());
+                break;
         }
-    };
+        return false;
+    }
 
     private void loadFragment(Fragment fragment) {
-        // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
         transaction.addToBackStack(null);
