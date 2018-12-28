@@ -19,7 +19,22 @@ public interface TrackDataSource {
     }
 
     interface LocalDataSource {
+        void getOfflineTracksInFolder(String folderName, OnFetchDataListener<Track> listener);
+
         void getOfflineTracks(OnFetchDataListener<Track> listener);
+
+        boolean deleteOfflineTrack(Track track);
+
+        boolean deleteTrack(Track track);
+
+        List<Track> getTracksFavorite();
+
+        void addTrackToFavorite(Track track, OnQueryDatabaseListener listener);
+
+        void deleteTrackFavorite(Track track, OnQueryDatabaseListener listener);
+
+        boolean isTrackInFavorite(Track track);
+
     }
 
     interface RemoteDataSource {

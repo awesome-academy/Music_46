@@ -13,4 +13,7 @@
     <dimen name="dp_90">90dp</dimen>
     <dimen name="dp_60">60dp</dimen>
     <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="sp_15">15sp</dimen>
+    <dimen name="dp_40">40dp</dimen>
 </resources>
