@@ -2,6 +2,8 @@ package com.example.themo.musicmarvelous.data.repository;
 
 import com.example.themo.musicmarvelous.data.model.Track;
 import com.example.themo.musicmarvelous.data.source.TrackDataSource;
+import com.example.themo.musicmarvelous.data.source.local.TrackLocalDataSource;
+import com.example.themo.musicmarvelous.data.source.remote.TrackRemoteDataSource;
 
 public class TrackRepository implements TrackDataSource.LocalDataSource,
         TrackDataSource.RemoteDataSource {
@@ -15,11 +17,11 @@ public class TrackRepository implements TrackDataSource.LocalDataSource,
         mRemoteDataSource = remoteDataSource;
     }
 
-    public static synchronized TrackRepository
-    getInstance(TrackDataSource.LocalDataSource localDataSource,
-                TrackDataSource.RemoteDataSource remoteDataSource) {
+    public static TrackRepository
+    getInstance() {
         if (sInstance == null) {
-            sInstance = new TrackRepository(localDataSource, remoteDataSource);
+            sInstance = new TrackRepository(TrackLocalDataSource.getInstance(),
+                    TrackRemoteDataSource.getInstance());
         }
         return sInstance;
     }

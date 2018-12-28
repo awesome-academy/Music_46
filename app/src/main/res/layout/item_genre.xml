@@ -7,11 +7,13 @@
 
     <TextView
         android:id="@+id/title_genre"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="@dimen/dp_30"
         android:layout_marginLeft="@dimen/dp_8"
         android:layout_marginTop="@dimen/dp_8"
         android:layout_marginRight="@dimen/dp_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:background="@android:color/white"
         android:paddingLeft="@dimen/dp_5"
         android:paddingRight="@dimen/dp_5"
@@ -23,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/dp_5"
-        android:src="@drawable/ic_keyboard_arrow_right"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right"
         app:layout_constraintEnd_toEndOf="@id/title_genre" />
 
     <ImageView

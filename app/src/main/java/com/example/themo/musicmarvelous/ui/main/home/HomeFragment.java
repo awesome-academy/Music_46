@@ -15,15 +15,22 @@ import com.example.themo.musicmarvelous.R;
 import com.example.themo.musicmarvelous.data.model.Genre;
 import com.example.themo.musicmarvelous.data.repository.GenreRepository;
 import com.example.themo.musicmarvelous.data.source.GenresLocalDataSource;
+import com.example.themo.musicmarvelous.ui.main.genredetail.GenreDetailFragment;
 
 import java.util.List;
 
-public class HomeFragment extends Fragment implements HomeContract.View {
+public class HomeFragment extends Fragment implements HomeContract.View, GenreAdapter.OnGenreClickListener {
     private Context mContext;
     private HomeContract.Presenter mPresenter;
     private RecyclerView mRecyclerView;
+    private GenreAdapter mGenreAdapter;
 
     public HomeFragment() {
+    }
+
+    public static HomeFragment newInstance() {
+        HomeFragment homeFragment = new HomeFragment();
+        return homeFragment;
     }
 
     @Nullable
@@ -34,21 +41,35 @@ public class HomeFragment extends Fragment implements HomeContract.View {
         mContext = getContext();
         mRecyclerView = view.findViewById(R.id.recycler_genre);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-
+        mGenreAdapter = new GenreAdapter(null, mContext);
+        mRecyclerView.setAdapter(mGenreAdapter);
+        mGenreAdapter.setOnGenreClickListener(this);
         mPresenter = new HomePresenter(this,
                 GenreRepository.getInstance(new GenresLocalDataSource()));
         mPresenter.loadGenres();
         return view;
     }
 
+    private void gotoDetailFragment(String genre) {
+        GenreDetailFragment detailFragment = GenreDetailFragment.newInstance(genre);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_genre_container, detailFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
     @Override
     public void showGenres(List<Genre> genres) {
-        GenreAdapter adapter = new GenreAdapter(genres, mContext);
-        mRecyclerView.setAdapter(adapter);
+        mGenreAdapter.setGenres(genres);
     }
 
     @Override
     public void showSongsByGenre() {
 
+    }
+
+    @Override
+    public void onGenreClicked(String genre) {
+        gotoDetailFragment(genre);
     }
 }

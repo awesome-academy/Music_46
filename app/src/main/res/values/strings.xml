@@ -11,5 +11,11 @@
     <string name="genre_ambient">Ambient</string>
     <string name="genre_country">Country</string>
     <string name="genre_classical">Classical</string>
+    <string name="action_add_to_now_playing">Add to Now Playing</string>
+    <string name="action_add_to_favorite">Add to Favorite</string>
+    <string name="action_download">Download</string>
+    <string name="track_name_holder">Track Name</string>
+    <string name="artist_holder">Artist</string>
+    <string name="msg_no_track_available">No Track is Available</string>
 
 </resources>
