@@ -5,6 +5,8 @@ import com.example.themo.musicmarvelous.data.source.TrackDataSource;
 import com.example.themo.musicmarvelous.data.source.local.TrackLocalDataSource;
 import com.example.themo.musicmarvelous.data.source.remote.TrackRemoteDataSource;
 
+import java.util.List;
+
 public class TrackRepository implements TrackDataSource.LocalDataSource,
         TrackDataSource.RemoteDataSource {
     private static TrackRepository sInstance;
@@ -27,8 +29,43 @@ public class TrackRepository implements TrackDataSource.LocalDataSource,
     }
 
     @Override
+    public void getOfflineTracksInFolder(String folderName, TrackDataSource.OnFetchDataListener<Track> listener) {
+
+    }
+
+    @Override
     public void getOfflineTracks(TrackDataSource.OnFetchDataListener<Track> listener) {
 
+    }
+
+    @Override
+    public boolean deleteOfflineTrack(Track track) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteTrack(Track track) {
+        return false;
+    }
+
+    @Override
+    public List<Track> getTracksFavorite() {
+        return null;
+    }
+
+    @Override
+    public void addTrackToFavorite(Track track, TrackDataSource.OnQueryDatabaseListener listener) {
+
+    }
+
+    @Override
+    public void deleteTrackFavorite(Track track, TrackDataSource.OnQueryDatabaseListener listener) {
+
+    }
+
+    @Override
+    public boolean isTrackInFavorite(Track track) {
+        return false;
     }
 
     @Override

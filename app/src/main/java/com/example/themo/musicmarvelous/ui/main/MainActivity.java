@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.example.themo.musicmarvelous.R;
 import com.example.themo.musicmarvelous.ui.main.home.HomeFragment;
+import com.example.themo.musicmarvelous.ui.main.personal.PersonalFragment;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View,
         BottomNavigationView.OnNavigationItemSelectedListener {
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 return true;
             case R.id.navigation_music:
                 mActionBar.setTitle(R.string.title_library_music);
+                loadFragment(PersonalFragment.newInstance());
                 return true;
             case R.id.navigation_settings:
                 mActionBar.setTitle(R.string.title_settings);
