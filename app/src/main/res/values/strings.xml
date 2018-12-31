@@ -21,5 +21,6 @@
     <string name="favorite">Favorite</string>
     <string name="text_download">Download</string>
     <string name="offline_music">OFFLINE MUSIC</string>
+    <string name="shuffle_all">SHUFFLE ALL</string>
 
 </resources>

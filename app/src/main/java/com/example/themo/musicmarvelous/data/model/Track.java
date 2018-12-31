@@ -13,7 +13,7 @@ public class Track {
     private String mUri;
     private String mPublisherAlbumTitle;
 
-    private Track(TrackBuilder builder) {
+    public Track(TrackBuilder builder) {
         mId = builder.mId;
         mDuration = builder.mDuration;
         mTitle = builder.mTitle;
@@ -25,6 +25,10 @@ public class Track {
         mIsDownloadable = builder.mIsDownloadable;
         mUri = builder.mUri;
         mPublisherAlbumTitle = builder.mPublisherAlbumTitle;
+    }
+
+    public Track() {
+
     }
 
     public static class TrackBuilder {

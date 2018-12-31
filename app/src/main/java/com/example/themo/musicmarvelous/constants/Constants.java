@@ -18,4 +18,7 @@ public class Constants {
     public static final int LIMIT_DEFAULT = 10;
     public static final int ITEM_SIZE = 72;
     public static final String GENRE_TYPE = "GENRE_TYPE";
+    public static final String DB_SORT_COLUMN_ASC = " %s ASC ";
+    public static final String PERCENT = "%";
+    public static final String DB_QUERY_EQUAL_SELECTION = " %s = ? ";
 }
