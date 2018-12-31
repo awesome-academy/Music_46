@@ -28,11 +28,6 @@ public class HomeFragment extends Fragment implements HomeContract.View, GenreAd
     public HomeFragment() {
     }
 
-    public static HomeFragment newInstance() {
-        HomeFragment homeFragment = new HomeFragment();
-        return homeFragment;
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -48,6 +43,11 @@ public class HomeFragment extends Fragment implements HomeContract.View, GenreAd
                 GenreRepository.getInstance(new GenresLocalDataSource()));
         mPresenter.loadGenres();
         return view;
+    }
+
+    public static HomeFragment newInstance() {
+        HomeFragment homeFragment = new HomeFragment();
+        return homeFragment;
     }
 
     private void gotoDetailFragment(String genre) {

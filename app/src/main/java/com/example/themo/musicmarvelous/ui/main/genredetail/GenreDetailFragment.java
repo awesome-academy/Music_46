@@ -1,5 +1,6 @@
 package com.example.themo.musicmarvelous.ui.main.genredetail;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,7 +29,6 @@ public class GenreDetailFragment extends Fragment implements GenreDetailContract
     private TrackListener mTrackListener;
     private List<Track> mTracks;
     private RecyclerView mRecyclerTracks;
-    private ProgressBar mProgressLoading;
     private String mGenre;
 
     public GenreDetailFragment() {
@@ -68,6 +68,21 @@ public class GenreDetailFragment extends Fragment implements GenreDetailContract
         mRecyclerTracks.addItemDecoration(
                 new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         mRecyclerTracks.setAdapter(mAdapter);
+
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof  TrackListener){
+            mTrackListener = (TrackListener) context;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mTrackListener = null;
     }
 
     @Override

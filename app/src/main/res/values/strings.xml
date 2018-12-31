@@ -17,8 +17,9 @@
     <string name="track_name_holder">Track Name</string>
     <string name="artist_holder">Artist</string>
     <string name="msg_no_track_available">No Track is Available</string>
-    <string name="list_track_offline">List Tracks Offline</string>
+    <string name="songs">Songs</string>
     <string name="favorite">Favorite</string>
     <string name="text_download">Download</string>
+    <string name="offline_music">OFFLINE MUSIC</string>
 
 </resources>
