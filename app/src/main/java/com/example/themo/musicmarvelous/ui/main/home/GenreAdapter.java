@@ -32,7 +32,10 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
     @NonNull
     @Override
     public GenreAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View view = LayoutInflater.from(parent.getContext())
+        if (mInflater == null) {
+            mInflater = LayoutInflater.from(parent.getContext());
+        }
+        View view = mInflater.from(parent.getContext())
                 .inflate(R.layout.item_genre, parent, false);
         return new ViewHolder(view);
     }

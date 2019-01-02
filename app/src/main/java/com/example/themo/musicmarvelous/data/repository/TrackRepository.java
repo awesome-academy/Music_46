@@ -15,12 +15,11 @@ public class TrackRepository implements TrackDataSource.LocalDataSource,
 
     private TrackRepository(TrackDataSource.LocalDataSource localDataSource,
                             TrackDataSource.RemoteDataSource remoteDataSource) {
-        mLocalDataSource = localDataSource;
-        mRemoteDataSource = remoteDataSource;
+        this.mLocalDataSource = localDataSource;
+        this.mRemoteDataSource = remoteDataSource;
     }
 
-    public static TrackRepository
-    getInstance() {
+    public static TrackRepository getInstance() {
         if (sInstance == null) {
             sInstance = new TrackRepository(TrackLocalDataSource.getInstance(),
                     TrackRemoteDataSource.getInstance());
@@ -30,7 +29,9 @@ public class TrackRepository implements TrackDataSource.LocalDataSource,
 
     @Override
     public void getOfflineTracksInFolder(String folderName, TrackDataSource.OnFetchDataListener<Track> listener) {
-
+        if (mLocalDataSource != null) {
+            mLocalDataSource.getOfflineTracksInFolder(folderName, listener);
+        }
     }
 
     @Override
@@ -71,6 +72,9 @@ public class TrackRepository implements TrackDataSource.LocalDataSource,
     @Override
     public void getOnlineTracks(String genre, int limit, int offSet,
                                 TrackDataSource.OnFetchDataListener<Track> listener) {
+        if (mRemoteDataSource != null) {
+            mRemoteDataSource.getOnlineTracks(genre, limit, offSet, listener);
+        }
 
     }
 }

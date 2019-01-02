@@ -55,20 +55,27 @@ public class FetchTrackFromUrl extends AsyncTask<String, Void, List<Track>> {
 
     private List<Track> getTracksFromJson(String data) throws JSONException {
         List<Track> tracks = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray(data);
+        JSONObject object = new JSONObject(data);
+        JSONArray jsonArray = object.getJSONArray(TrackEntity.COLLECTION);
         for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonObject = new JSONObject(jsonArray.getString(i));
-            String artworkUrl = jsonObject.getString(TrackEntity.ARTWORK_URL);
-            String description = jsonObject.getString(TrackEntity.DESCRIPTION);
+            JSONObject jsonObject = jsonArray.getJSONObject(i).getJSONObject(TrackEntity.TRACK);
+
+            String artworkUrl = jsonObject.optString(TrackEntity.ARTWORK_URL);
+            if (!artworkUrl.isEmpty()) {
+                artworkUrl = artworkUrl.replace(TrackEntity.LARGE_IMAGE_SIZE, TrackEntity.BETTER_IMAGE_SIZE);
+            } else {
+                artworkUrl = jsonObject.getJSONObject(TrackEntity.USER).optString(TrackEntity.AVATAR_URL);
+            }
+            String description = jsonObject.optString(TrackEntity.DESCRIPTION);
             boolean downloadable = jsonObject.getBoolean(TrackEntity.DOWNLOADABLE);
-            String downloadUrl = jsonObject.getString(TrackEntity.DOWNLOAD_URL);
+            String downloadUrl = jsonObject.optString(TrackEntity.DOWNLOAD_URL);
             int duration = jsonObject.getInt(TrackEntity.DURATION);
-            String genre = jsonObject.getString(TrackEntity.GENRE);
+            String genre = jsonObject.optString(TrackEntity.GENRE);
             int id = jsonObject.getInt(TrackEntity.ID);
-            String title = jsonObject.getString(TrackEntity.TITLE);
-            String artist = jsonObject.getString(TrackEntity.ARTIST);
-            String uri = jsonObject.getString(TrackEntity.URI);
-            String publisherAlbumTitle = jsonObject.getJSONObject(TrackEntity.PUBLISHER_METADATA)
+            String title = jsonObject.optString(TrackEntity.TITLE);
+            String artist = jsonObject.optString(TrackEntity.ARTIST);
+            String uri = jsonObject.optString(TrackEntity.URI);
+            String publisherAlbumTitle = jsonObject.optJSONObject(TrackEntity.PUBLISHER_METADATA)
                     .getString(TrackEntity.PUBLISHER_ALBUM_TITLE);
             Track track = new Track.TrackBuilder()
                     .withId(id)

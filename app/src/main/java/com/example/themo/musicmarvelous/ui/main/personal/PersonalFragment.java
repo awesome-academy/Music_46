@@ -12,11 +12,7 @@ import android.widget.TextView;
 import com.example.themo.musicmarvelous.R;
 
 public class PersonalFragment extends Fragment implements PersonalContract.View, View.OnClickListener {
-    private static final int[] ITEM_ID = {R.id.image_track, R.id.image_favorite,
-            R.id.image_download, R.id.image_favorite_detail,
-            R.id.image_download_detail, R.id.image_track_detail,
-            R.id.text_list_track, R.id.text_favorite,
-            R.id.text_download};
+    private static final int[] ITEM_ID = {R.id.linear_local, R.id.linear_favorite, R.id.linear_download};
     private PersonalContract.Presenter mPresenter;
     private TextView mTextViewListTrackCount;
     private TextView mTextViewFavoriteCount;
@@ -40,6 +36,7 @@ public class PersonalFragment extends Fragment implements PersonalContract.View,
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_personal, container, false);
+
         return view;
     }
 
@@ -90,9 +87,9 @@ public class PersonalFragment extends Fragment implements PersonalContract.View,
     }
 
     private void initComponent(View view) {
-        mTextViewListTrackCount = view.findViewById(R.id.text_list_track);
-        mTextViewFavoriteCount = view.findViewById(R.id.text_favorite);
-        mTextViewDownloadCount = view.findViewById(R.id.text_download);
+        mTextViewListTrackCount = view.findViewById(R.id.text_count_music);
+        mTextViewFavoriteCount = view.findViewById(R.id.text_count_favorite);
+        mTextViewDownloadCount = view.findViewById(R.id.text_download_music);
         mTextViewListTrackCount.setOnClickListener(this);
         mTextViewFavoriteCount.setOnClickListener(this);
         mTextViewDownloadCount.setOnClickListener(this);
