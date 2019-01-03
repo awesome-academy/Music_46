@@ -11,6 +11,7 @@ import com.example.themo.musicmarvelous.data.model.Track;
 import com.example.themo.musicmarvelous.data.source.TrackDataSource;
 import com.example.themo.musicmarvelous.data.source.sqlite.TrackDatabaseHelper;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,7 +106,8 @@ public class TrackLocalDataSource implements TrackDataSource.LocalDataSource {
 
     @Override
     public boolean deleteOfflineTrack(Track track) {
-        return false;
+        File file = new File(track.getUri());
+        return file.delete();
     }
 
     @Override

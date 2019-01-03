@@ -4,19 +4,22 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import com.example.themo.musicmarvelous.R;
+import com.example.themo.musicmarvelous.ui.main.favorite.FavoriteFragment;
 
-public class PersonalFragment extends Fragment implements PersonalContract.View, View.OnClickListener {
-    private static final int[] ITEM_ID = {R.id.linear_local, R.id.linear_favorite, R.id.linear_download};
+public class PersonalFragment extends Fragment implements PersonalContract.View,
+        View.OnClickListener {
+
     private PersonalContract.Presenter mPresenter;
-    private TextView mTextViewListTrackCount;
-    private TextView mTextViewFavoriteCount;
-    private TextView mTextViewDownloadCount;
+    private LinearLayout mLinearLocal;
+    private LinearLayout mLinearDownload;
+    private LinearLayout mLinearFavorite;
 
     public PersonalFragment() {
     }
@@ -36,7 +39,6 @@ public class PersonalFragment extends Fragment implements PersonalContract.View,
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_personal, container, false);
-
         return view;
     }
 
@@ -53,7 +55,17 @@ public class PersonalFragment extends Fragment implements PersonalContract.View,
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.linear_local:
+                break;
+            case R.id.linear_favorite:
+                goToFavoriteTrackFragment();
+                break;
+            case R.id.linear_download:
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -73,7 +85,11 @@ public class PersonalFragment extends Fragment implements PersonalContract.View,
 
     @Override
     public void goToFavoriteTrackFragment() {
-
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                .beginTransaction();
+        transaction.add(R.id.linear_personal, FavoriteFragment.newInstance());
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
@@ -87,14 +103,11 @@ public class PersonalFragment extends Fragment implements PersonalContract.View,
     }
 
     private void initComponent(View view) {
-        mTextViewListTrackCount = view.findViewById(R.id.text_count_music);
-        mTextViewFavoriteCount = view.findViewById(R.id.text_count_favorite);
-        mTextViewDownloadCount = view.findViewById(R.id.text_download_music);
-        mTextViewListTrackCount.setOnClickListener(this);
-        mTextViewFavoriteCount.setOnClickListener(this);
-        mTextViewDownloadCount.setOnClickListener(this);
-        for (int id : ITEM_ID) {
-            view.findViewById(id).setOnClickListener(this);
-        }
+        mLinearLocal = view.findViewById(R.id.linear_local);
+        mLinearDownload = view.findViewById(R.id.linear_download);
+        mLinearFavorite = view.findViewById(R.id.linear_favorite);
+        mLinearLocal.setOnClickListener(this);
+        mLinearFavorite.setOnClickListener(this);
+        mLinearDownload.setOnClickListener(this);
     }
 }

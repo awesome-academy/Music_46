@@ -39,5 +39,7 @@ public interface TrackDataSource {
 
     interface RemoteDataSource {
         void getOnlineTracks(String genre, int limit, int offSet, OnFetchDataListener<Track> listener);
+
+        void searchTracksOnline(String name, int offSet, OnFetchDataListener<Track> listener);
     }
 }

@@ -22,5 +22,8 @@
     <string name="text_download">Download</string>
     <string name="offline_music">OFFLINE MUSIC</string>
     <string name="shuffle_all">SHUFFLE ALL</string>
+    <string name="action_play">Play</string>
+    <string name="action_delete">Delete</string>
+    <string name="soundcloud">SoundCloud</string>
 
 </resources>

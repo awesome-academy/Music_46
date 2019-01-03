@@ -43,32 +43,36 @@ public class TrackRepository implements TrackDataSource.LocalDataSource,
 
     @Override
     public boolean deleteOfflineTrack(Track track) {
-        return false;
+        return mLocalDataSource.deleteOfflineTrack(track);
     }
 
     @Override
     public boolean deleteTrack(Track track) {
-        return false;
+        return mLocalDataSource != null && mLocalDataSource.deleteTrack(track);
     }
 
     @Override
     public List<Track> getTracksFavorite() {
-        return null;
+        return mLocalDataSource != null ? mLocalDataSource.getTracksFavorite() : null;
     }
 
     @Override
     public void addTrackToFavorite(Track track, TrackDataSource.OnQueryDatabaseListener listener) {
-
+        if (mLocalDataSource != null) {
+            mLocalDataSource.addTrackToFavorite(track, listener);
+        }
     }
 
     @Override
     public void deleteTrackFavorite(Track track, TrackDataSource.OnQueryDatabaseListener listener) {
-
+        if (mLocalDataSource != null) {
+            mLocalDataSource.deleteTrackFavorite(track, listener);
+        }
     }
 
     @Override
     public boolean isTrackInFavorite(Track track) {
-        return false;
+        return mLocalDataSource.isTrackInFavorite(track);
     }
 
     @Override
@@ -77,6 +81,11 @@ public class TrackRepository implements TrackDataSource.LocalDataSource,
         if (mRemoteDataSource != null) {
             mRemoteDataSource.getOnlineTracks(genre, limit, offSet, listener);
         }
+    }
 
+    public void searchTracksOnline(String name, int offSet, TrackDataSource.OnFetchDataListener<Track> listener) {
+        if (mRemoteDataSource != null) {
+            mRemoteDataSource.searchTracksOnline(name, offSet, listener);
+        }
     }
 }
