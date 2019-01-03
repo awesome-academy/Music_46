@@ -36,7 +36,9 @@ public class TrackRepository implements TrackDataSource.LocalDataSource,
 
     @Override
     public void getOfflineTracks(TrackDataSource.OnFetchDataListener<Track> listener) {
-
+        if (mLocalDataSource != null) {
+            mLocalDataSource.getOfflineTracks(listener);
+        }
     }
 
     @Override

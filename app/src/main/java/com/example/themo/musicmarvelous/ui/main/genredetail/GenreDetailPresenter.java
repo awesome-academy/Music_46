@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenreDetailPresenter implements GenreDetailContract.Presenter,
-        TrackDataSource.OnFetchDataListener {
+        TrackDataSource.OnFetchDataListener<Track> {
     private GenreDetailContract.View mView;
     private TrackRepository mTrackRepository;
 
@@ -28,7 +28,7 @@ public class GenreDetailPresenter implements GenreDetailContract.Presenter,
     }
 
     @Override
-    public void onFetchDataSuccess(List data) {
+    public void onFetchDataSuccess(List<Track> data) {
         if (data == null || data.isEmpty()) {
             mView.showNoTrackAvailable();
             return;
