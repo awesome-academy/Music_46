@@ -13,4 +13,7 @@ public interface TrackListener {
 
     void downloadTrack(Track track);
 
+    void onAddToNextUp(Track track);
+
+    void onRemoveTrackFromFavorite(Track track);
 }

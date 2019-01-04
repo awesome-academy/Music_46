@@ -20,4 +20,9 @@ public class TrackRemoteDataSource implements TrackDataSource.RemoteDataSource {
         new FetchTrackFromUrl(listener)
                 .execute(StringUtil.formatTrackURL(genre, limit, offSet));
     }
+
+    @Override
+    public void searchTracksOnline(String name, int offSet, TrackDataSource.OnFetchDataListener<Track> listener) {
+
+    }
 }

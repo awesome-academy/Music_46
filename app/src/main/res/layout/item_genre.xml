@@ -8,25 +8,41 @@
     <TextView
         android:id="@+id/title_genre"
         android:layout_width="0dp"
-        android:layout_height="@dimen/dp_30"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_8"
         android:layout_marginTop="@dimen/dp_8"
         android:layout_marginRight="@dimen/dp_8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:background="@android:color/white"
-        android:paddingLeft="@dimen/dp_5"
-        android:paddingRight="@dimen/dp_5"
         android:text="@string/genre"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/sp_20"
+        android:paddingLeft="@dimen/dp_5"
+        app:layout_constraintBottom_toTopOf="@id/title_source"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/image_genre_play" />
+
+    <TextView
+        android:id="@+id/title_source"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/soundcloud"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_5"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/image_genre_play"
+        app:layout_constraintStart_toStartOf="@id/title_genre"
+        app:layout_constraintEnd_toEndOf="@id/title_genre"
+        app:layout_constraintTop_toBottomOf="@id/title_genre"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
         android:id="@+id/image_genre_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/dp_5"
-        app:srcCompat="@drawable/ic_keyboard_arrow_right"
-        app:layout_constraintEnd_toEndOf="@id/title_genre" />
+        app:layout_constraintEnd_toEndOf="@id/title_source"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right" />
 
     <ImageView
         android:id="@+id/image_genre"
@@ -37,6 +53,6 @@
         android:adjustViewBounds="true"
         android:background="@mipmap/ic_launcher"
         android:scaleType="fitXY"
-        app:layout_constraintTop_toBottomOf="@id/title_genre" />
+        app:layout_constraintTop_toBottomOf="@id/title_source" />
 
 </android.support.constraint.ConstraintLayout>
