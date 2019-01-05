@@ -25,5 +25,7 @@
     <string name="action_play">Play</string>
     <string name="action_delete">Delete</string>
     <string name="soundcloud">SoundCloud</string>
+    <string name="msg_added">Track is Added</string>
+    <string name="msg_deleted">Track is Deleted</string>
 
 </resources>

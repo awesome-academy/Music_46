@@ -24,4 +24,5 @@ public class Constants {
     public static final String SEARCH_QUERY_FORMAT = "%s%s%s&%s=%d&%s=%s";
     public static final String SEARCH_TRACK = "search/tracks?facet=genre&limit=10&linked_partitioning=1&q=";
     public static final String STREAM = "stream";
+    public static final int DEFAULT_ITEM_SIZE = 72;
 }

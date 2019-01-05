@@ -114,11 +114,89 @@ public class TrackDatabaseHelper extends SQLiteOpenHelper {
         return tracks;
     }
 
+    public Track getTrackById(int trackId) {
+        SQLiteDatabase database = getReadableDatabase();
+        String selection = String.format(Constants.DB_QUERY_EQUAL_SELECTION, TrackEntity.ID);
+        String[] selectionArgs = new String[]{String.valueOf(trackId)};
+        Cursor cursor = database.query(TrackEntry.TABLE_NAME_TRACK,
+                null,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+        Track track = null;
+        if (cursor.moveToNext()) {
+            track = parseTrackFromRow(cursor);
+        }
+        cursor.close();
+        database.close();
+        return track;
+    }
+
     public void deleteTrack(Track track) {
         SQLiteDatabase database = getWritableDatabase();
         String selection = String.format(Constants.DB_QUERY_EQUAL_SELECTION, TrackEntity.ID);
         String[] selectionArgs = new String[]{String.valueOf(track.getId())};
         database.delete(TrackEntry.TABLE_NAME_TRACK, selection, selectionArgs);
+        database.close();
+    }
+
+    public void addTrackToFavorite(Track track) {
+        SQLiteDatabase database = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TrackEntity.ID, track.getId());
+        database.insert(TrackEntry.TABLE_NAME_FAVORITE, null, values);
+        database.close();
+    }
+
+    public boolean isTrackInFavorite(Track track) {
+        SQLiteDatabase database = getReadableDatabase();
+        String selection = String.format(Constants.DB_QUERY_EQUAL_SELECTION, TrackEntity.ID);
+        String[] selectionArgs = new String[]{String.valueOf(track.getId())};
+        Cursor cursor = database.query(TrackEntry.TABLE_NAME_FAVORITE, null,
+                selection, selectionArgs, null, null, null);
+        boolean check = (cursor.getCount() > 0);
+        cursor.close();
+        database.close();
+        return check;
+    }
+
+    public List<Track> getAllFavoriteTrack() {
+        SQLiteDatabase database = getReadableDatabase();
+        String query = new StringBuilder()
+                .append(SELECT_ALL).append(TrackEntry.TABLE_NAME_TRACK)
+                .append(INNER_JOIN).append(TrackEntry.TABLE_NAME_FAVORITE)
+                .append(ON)
+                .append(TrackEntry.TABLE_NAME_TRACK).append(DOT).append(TrackEntity.ID)
+                .append(EQUAL)
+                .append(TrackEntry.TABLE_NAME_FAVORITE).append(DOT).append(TrackEntity.ID)
+                .toString();
+        Cursor cursor = database.rawQuery(query, null);
+        List<Track> tracks = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            tracks.add(parseTrackFromRow(cursor));
+        }
+        cursor.close();
+        database.close();
+        return tracks;
+    }
+
+    public int getFavoriteTracksCount() {
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.query(TrackEntry.TABLE_NAME_FAVORITE, null, null, null,
+                null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        database.close();
+        return count;
+    }
+
+    public void removeTrackFromFavorite(Track track) {
+        SQLiteDatabase database = getWritableDatabase();
+        String selection = String.format(Constants.DB_QUERY_EQUAL_SELECTION, TrackEntity.ID);
+        String[] selectionArgs = {String.valueOf(track.getId())};
+        database.delete(TrackEntry.TABLE_NAME_FAVORITE, selection, selectionArgs);
         database.close();
     }
 

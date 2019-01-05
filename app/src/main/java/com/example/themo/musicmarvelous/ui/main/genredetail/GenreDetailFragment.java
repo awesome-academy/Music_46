@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.themo.musicmarvelous.R;
@@ -19,6 +18,7 @@ import com.example.themo.musicmarvelous.constants.Constants;
 import com.example.themo.musicmarvelous.data.model.Track;
 import com.example.themo.musicmarvelous.data.repository.TrackRepository;
 import com.example.themo.musicmarvelous.ui.main.TrackListener;
+import com.example.themo.musicmarvelous.utils.ScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,13 +68,18 @@ public class GenreDetailFragment extends Fragment implements GenreDetailContract
         mRecyclerTracks.addItemDecoration(
                 new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         mRecyclerTracks.setAdapter(mAdapter);
-
+        mRecyclerTracks.addOnScrollListener(new ScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int offset) {
+                mPresenter.loadTracks(mGenre, Constants.LIMIT_DEFAULT, offset);
+            }
+        });
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof  TrackListener){
+        if (context instanceof TrackListener) {
             mTrackListener = (TrackListener) context;
         }
     }
