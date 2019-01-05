@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 
+import com.example.themo.musicmarvelous.R;
 import com.example.themo.musicmarvelous.constants.Constants;
 import com.example.themo.musicmarvelous.data.model.Track;
 import com.example.themo.musicmarvelous.data.source.TrackDataSource;
@@ -112,27 +113,34 @@ public class TrackLocalDataSource implements TrackDataSource.LocalDataSource {
 
     @Override
     public boolean deleteTrack(Track track) {
-        return false;
+        mDatabaseHelper.deleteTrack(track);
+        return true;
     }
 
     @Override
     public List<Track> getTracksFavorite() {
-        return null;
+        return mDatabaseHelper.getAllFavoriteTrack();
     }
 
     @Override
     public void addTrackToFavorite(Track track, TrackDataSource.OnQueryDatabaseListener listener) {
-
+        if (isTrackInFavorite(track)) return;
+        if (mDatabaseHelper.getTrackById(track.getId()) == null) {
+            mDatabaseHelper.insertTrack(track);
+        }
+        mDatabaseHelper.addTrackToFavorite(track);
+        listener.onQuerySuccess(mContext.getString(R.string.msg_added));
     }
 
     @Override
     public void deleteTrackFavorite(Track track, TrackDataSource.OnQueryDatabaseListener listener) {
-
+        mDatabaseHelper.removeTrackFromFavorite(track);
+        listener.onQuerySuccess(mContext.getString(R.string.msg_deleted));
     }
 
     @Override
     public boolean isTrackInFavorite(Track track) {
-        return false;
+        return mDatabaseHelper.isTrackInFavorite(track);
     }
 
     private Track parseTrackFromRow(Cursor cursor) {

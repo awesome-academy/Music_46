@@ -37,7 +37,6 @@ public class FavoriteAdapter extends BaseTrackAdapter<FavoriteAdapter.FavoriteVi
                         case R.id.action_play:
                             return true;
                         case R.id.action_delete:
-                            // TODO delete track
                             return true;
                         default:
                             return false;
