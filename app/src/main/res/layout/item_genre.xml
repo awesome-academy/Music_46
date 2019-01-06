@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/dp_5"
         app:layout_constraintEnd_toEndOf="@id/title_source"
-        app:srcCompat="@drawable/ic_keyboard_arrow_right" />
+        app:srcCompat="@drawable/ic_arrow_right" />
 
     <ImageView
         android:id="@+id/image_genre"
