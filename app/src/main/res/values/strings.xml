@@ -27,5 +27,6 @@
     <string name="soundcloud">SoundCloud</string>
     <string name="msg_added">Track is Added</string>
     <string name="msg_deleted">Track is Deleted</string>
+    <string name="default_duration">0:00</string>
 
 </resources>

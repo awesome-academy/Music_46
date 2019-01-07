@@ -19,4 +19,8 @@
     <dimen name="dp_280">280dp</dimen>
     <dimen name="dp_265">265dp</dimen>
     <dimen name="dp_250">250dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_13">13dp</dimen>
 </resources>
