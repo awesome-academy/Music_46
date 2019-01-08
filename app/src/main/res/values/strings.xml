@@ -28,5 +28,8 @@
     <string name="msg_added">Track is Added</string>
     <string name="msg_deleted">Track is Deleted</string>
     <string name="default_duration">0:00</string>
+    <string name="channel_id">Channel_id_1</string>
+    <string name="channel_name">My Channel</string>
+    <string name="channel_description">Description Channel</string>
 
 </resources>

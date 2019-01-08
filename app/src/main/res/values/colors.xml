@@ -6,4 +6,5 @@
     <color name="color_yellow_light">#7c711b</color>
     <color name="color_yellow_dark">#251b0a</color>
     <color name="color_white_azure">#dad5d5</color>
+    <color name="color_gray_600">#847c03</color>
 </resources>
