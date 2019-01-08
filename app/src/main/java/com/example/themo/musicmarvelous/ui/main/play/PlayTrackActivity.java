@@ -30,7 +30,7 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
 
     private static final long DELAY_MILLIS = 500;
     private static final int HUNDRED = 100;
-    private ImageView mImageState;
+    private ImageView mImageStated;
     private ImageView mImagePrevious;
     private ImageView mImageNext;
     private ImageView mImageLoop;
@@ -47,7 +47,7 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
     private Track mCurrentTrack;
     private int mUserSelectedPosition = 0;
     private boolean mIsBound;
-    private TrackPlayerService mService;
+    private TrackPlayerService mTrackPlayerService;
     private PlayTrackContract.Presenter mPresenter;
     private ImageView mImageNextUp;
     private ImageView mImageClose;
@@ -133,20 +133,20 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
         @Override
         public void onServiceConnected(ComponentName className, IBinder service) {
             mIsBound = true;
-            mService = ((TrackPlayerService.LocalBinder) service).getService();
-            mService.setTrackInfoListener(PlayTrackActivity.this);
-            mCurrentTrack = mService.getCurrentTrack();
+            mTrackPlayerService = ((TrackPlayerService.LocalBinder) service).getService();
+            mTrackPlayerService.setTrackInfoListener(PlayTrackActivity.this);
+            mCurrentTrack = mTrackPlayerService.getCurrentTrack();
 
             updateTrackInfo();
-            updateStateInfo(mService.getMediaState());
-            updateLoopMode(mService.getLoopMode());
-            updateShuffleMode(mService.getShuffleMode());
+            updateStateInfo(mTrackPlayerService.getMediaState());
+            updateLoopMode(mTrackPlayerService.getLoopMode());
+            updateShuffleMode(mTrackPlayerService.getShuffleMode());
         }
 
         @Override
         public void onServiceDisconnected(ComponentName arg0) {
             mIsBound = false;
-            mService.setTrackInfoListener(null);
+           mTrackPlayerService.setTrackInfoListener(null);
         }
     };
 
@@ -154,7 +154,8 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
     }
 
     private void initComponents() {
-        mImageState = findViewById(R.id.image_track_state);
+
+        mImageStated = findViewById(R.id.image_track_state);
         mImagePrevious = findViewById(R.id.image_track_previous);
         mImageNext = findViewById(R.id.image_track_next);
         mImageLoop = findViewById(R.id.image_loop);
@@ -179,7 +180,8 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
     }
 
     private void setupEvents() {
-        mImageState.setOnClickListener(this);
+
+        mImageStated.setOnClickListener(this);
         mImagePrevious.setOnClickListener(this);
         mImageNext.setOnClickListener(this);
         mImageLoop.setOnClickListener(this);
@@ -208,7 +210,7 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
             if (mIsBound) {
-                mService.actionSeekTo(mUserSelectedPosition);
+                mTrackPlayerService.actionSeekTo(mUserSelectedPosition);
             }
         }
     };
@@ -221,13 +223,13 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
                 break;
             case State.PLAYING:
                 hideLoading();
-                mImageState.setImageDrawable(getResources()
+                mImageStated.setImageDrawable(getResources()
                         .getDrawable(R.drawable.ic_pause_circle_filled_black));
                 updateSeekBar();
                 break;
             case State.PAUSE:
                 hideLoading();
-                mImageState.setImageDrawable(getResources()
+                mImageStated.setImageDrawable(getResources()
                         .getDrawable(R.drawable.ic_play_circle_filled_black));
                 break;
             default:
@@ -246,10 +248,10 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
         mRunnable = new Runnable() {
             @Override
             public void run() {
-                mSeekBar.setProgress((int) ((double) mService.getCurrentPosition()
-                        / mService.getDuration() * HUNDRED));
+                mSeekBar.setProgress((int) ((double) mTrackPlayerService.getCurrentPosition()
+                        / mTrackPlayerService.getDuration() * HUNDRED));
                 mTextViewStart.setText(StringUtil.convertMilisecondToTimer
-                        (mService.getCurrentPosition()));
+                        (mTrackPlayerService.getCurrentPosition()));
                 mHandler.postDelayed(this, DELAY_MILLIS);
             }
         };

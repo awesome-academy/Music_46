@@ -7,12 +7,17 @@ import com.example.themo.musicmarvelous.constants.ShuffleMode;
 import com.example.themo.musicmarvelous.constants.State;
 import com.example.themo.musicmarvelous.data.model.Track;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TrackPlayerController implements ManagerTrackPlayer {
 
     private static final long DELAY_MILLIS = 500;
+    private static final int HUNDRED = 100;
     private static final int CHANGED_POSITION = 1;
+    private static final int ZERO = 0;
+
     @State
     private int mState;
     @LoopMode
@@ -42,7 +47,15 @@ public class TrackPlayerController implements ManagerTrackPlayer {
     private final MediaPlayer.OnCompletionListener mCompletion = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mp) {
+            notifyStateChanged(State.PAUSE);
+        }
+    };
 
+    private final MediaPlayer.OnPreparedListener mOnPrepared = new MediaPlayer.OnPreparedListener() {
+        @Override
+        public void onPrepared(MediaPlayer mp) {
+            mMediaPlayer.start();
+            notifyStateChanged(State.PLAYING);
         }
     };
 
@@ -61,22 +74,37 @@ public class TrackPlayerController implements ManagerTrackPlayer {
 
     @Override
     public void playPreviousTrack() {
-
+        if (mCurrentTrackPosition > ZERO) {
+            mCurrentTrackPosition--;
+            prepareTrack();
+        }
     }
 
     @Override
     public void changeTrackState() {
-
+        if (mMediaPlayer == null) return;
+        if (mMediaPlayer.isPlaying()) {
+            mMediaPlayer.pause();
+            notifyStateChanged(State.PAUSE);
+        } else {
+            mMediaPlayer.start();
+            notifyStateChanged(State.PLAYING);
+            // TODO
+        }
     }
 
     @Override
     public void release() {
-
+        if (mMediaPlayer == null) return;
+        mMediaPlayer.release();
+        mMediaPlayer = null;
     }
 
     @Override
     public void seekTo(int percent) {
-
+        if (mState == State.PAUSE || mState == State.PLAYING) {
+            mMediaPlayer.seekTo(mMediaPlayer.getDuration() / HUNDRED * percent);
+        }
     }
 
     @Override
@@ -86,27 +114,41 @@ public class TrackPlayerController implements ManagerTrackPlayer {
 
     @Override
     public Track getCurrentTrack() {
-        return null;
+        return mTracks == null ? null : mTracks.get(mCurrentTrackPosition);
     }
 
     @Override
     public int getCurrentTrackPosition() {
-        return 0;
+        return mCurrentTrackPosition;
     }
 
     @Override
     public List<Track> getListTracks() {
-        return null;
+        return mTracks;
     }
 
     @Override
     public void playTrackAtPosition(int position, Track... tracks) {
-
+        if (tracks == null && mTracks == null) {
+            notifyStateChanged(State.INVALID);
+            return;
+        }
+        if ((tracks == null || tracks.length == 0) && mCurrentTrackPosition == position) return;
+        if (tracks != null && tracks.length != 0) {
+            mTracks = new ArrayList<>();
+            Collections.addAll(mTracks, tracks);
+        }
+        mCurrentTrackPosition = position;
+        prepareTrack();
     }
 
     @Override
     public void addToNextUp(Track track) {
-
+        if (mTracks == null || mTracks.isEmpty()) return;
+        mTracks.add(track);
+        if (mShuffleMode == ShuffleMode.ON) {
+            mOriginalTracks.add(track);
+        }
     }
 
     @Override
@@ -131,12 +173,14 @@ public class TrackPlayerController implements ManagerTrackPlayer {
 
     @Override
     public int getCurrentPosition() {
-        return 0;
+        if (mMediaPlayer == null) return 0;
+        return mMediaPlayer.getCurrentPosition();
     }
 
     @Override
     public int getDuration() {
-        return 0;
+        if (mMediaPlayer == null) return 0;
+        return mMediaPlayer.getDuration();
     }
 
     private void prepareTrack() {
@@ -152,6 +196,12 @@ public class TrackPlayerController implements ManagerTrackPlayer {
 
     private void notifyStateChanged(@State int state) {
         mState = state;
+        if (mTrackPlayerService != null) {
+            if (state == State.PREPARE) mTrackPlayerService.loadImage();
+            mTrackPlayerService.createNotification(state);
+        }
+        if (mInfoListener == null) return;
+        mInfoListener.onStateChanged(mState);
     }
 
     public interface TrackInfoListener {
