@@ -1,5 +1,7 @@
 package com.example.themo.musicmarvelous.ui.main;
 
+import com.example.themo.musicmarvelous.data.model.Track;
+
 public class MainPresenter implements MainContract.Presenter {
     private MainContract.View mView;
 
@@ -9,6 +11,16 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void start() {
+        mView.setPresenter(this);
+    }
+
+    @Override
+    public void addToFavorite(Track track) {
+
+    }
+
+    @Override
+    public void removeFromFavorite(Track track) {
 
     }
 }

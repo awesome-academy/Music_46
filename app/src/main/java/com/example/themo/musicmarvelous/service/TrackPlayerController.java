@@ -12,6 +12,7 @@ import java.util.List;
 public class TrackPlayerController implements ManagerTrackPlayer {
 
     private static final long DELAY_MILLIS = 500;
+    private static final int CHANGED_POSITION = 1;
     @State
     private int mState;
     @LoopMode
@@ -52,7 +53,10 @@ public class TrackPlayerController implements ManagerTrackPlayer {
 
     @Override
     public void playNextTrack() {
-
+        if (mCurrentTrackPosition < mTracks.size() - CHANGED_POSITION) {
+            mCurrentTrackPosition++;
+            prepareTrack();
+        }
     }
 
     @Override
@@ -133,6 +137,21 @@ public class TrackPlayerController implements ManagerTrackPlayer {
     @Override
     public int getDuration() {
         return 0;
+    }
+
+    private void prepareTrack() {
+        if (mTracks == null || mTracks.isEmpty()) {
+            notifyStateChanged(State.INVALID);
+            return;
+        }
+        release();
+        notifyStateChanged(State.PREPARE);
+        if (mInfoListener == null) return;
+        mInfoListener.onTrackChanged(mTracks.get(mCurrentTrackPosition));
+    }
+
+    private void notifyStateChanged(@State int state) {
+        mState = state;
     }
 
     public interface TrackInfoListener {
