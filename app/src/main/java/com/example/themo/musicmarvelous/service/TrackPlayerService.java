@@ -1,10 +1,11 @@
 package com.example.themo.musicmarvelous.service;
 
-import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 
 import com.example.themo.musicmarvelous.constants.LoopMode;
 import com.example.themo.musicmarvelous.constants.ShuffleMode;
@@ -20,7 +21,13 @@ public class TrackPlayerService extends Service {
     public static final String ACTION_PREVIOUS_TRACK = "ACTION_PREVIOUS_TRACK";
     public static final String ACTION_OPEN_PLAY_TRACK_ACTIVITY = "ACTION_OPEN_PLAY_TRACK_ACTIVITY";
     public static final int SECONDS_FACTOR = 1000;
+    private static final int NOTIFY_ID = 1;
 
+    private PendingIntent mPendingOpenApp;
+    private PendingIntent mPendingPrevious;
+    private PendingIntent mPendingState;
+    private PendingIntent mPendingNext;
+    private NotificationCompat.Builder mBuilder;
     private ManagerTrackPlayer mTrackPlayerManager;
     private final IBinder mBinder = new LocalBinder();
 
