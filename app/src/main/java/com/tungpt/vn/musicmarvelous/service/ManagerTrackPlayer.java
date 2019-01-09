@@ -1,8 +1,8 @@
-package com.example.themo.musicmarvelous.service;
+package com.tungpt.vn.musicmarvelous.service;
 
-import com.example.themo.musicmarvelous.constants.LoopMode;
-import com.example.themo.musicmarvelous.constants.ShuffleMode;
-import com.example.themo.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.constants.LoopMode;
+import com.tungpt.vn.musicmarvelous.constants.ShuffleMode;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
 
 import java.util.List;
 

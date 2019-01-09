@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.main.genredetail;
+package com.tungpt.vn.musicmarvelous.ui.main.genredetail;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,12 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.constants.Constants;
-import com.example.themo.musicmarvelous.data.model.Track;
-import com.example.themo.musicmarvelous.data.repository.TrackRepository;
-import com.example.themo.musicmarvelous.ui.main.TrackListener;
-import com.example.themo.musicmarvelous.utils.ScrollListener;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.constants.Constants;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.data.repository.TrackRepository;
+import com.tungpt.vn.musicmarvelous.ui.main.TrackListener;
+import com.tungpt.vn.musicmarvelous.utils.ScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;

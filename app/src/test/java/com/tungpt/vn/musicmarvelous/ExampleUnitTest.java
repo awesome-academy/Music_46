@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous;
+package com.tungpt.vn.musicmarvelous;
 
 import org.junit.Test;
 

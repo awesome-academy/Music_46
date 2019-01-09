@@ -1,6 +1,6 @@
-package com.example.themo.musicmarvelous.ui.main.personal;
+package com.tungpt.vn.musicmarvelous.ui.main.personal;
 
-import com.example.themo.musicmarvelous.data.repository.TrackRepository;
+import com.tungpt.vn.musicmarvelous.data.repository.TrackRepository;
 
 public class PersonalPresenter implements PersonalContract.Presenter {
     private PersonalContract.View mView;

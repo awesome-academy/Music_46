@@ -1,7 +1,7 @@
-package com.example.themo.musicmarvelous.ui.splash;
+package com.tungpt.vn.musicmarvelous.ui.splash;
 
-import com.example.themo.musicmarvelous.BasePresenter;
-import com.example.themo.musicmarvelous.BaseView;
+import com.tungpt.vn.musicmarvelous.BasePresenter;
+import com.tungpt.vn.musicmarvelous.BaseView;
 
 public class SplashContract {
     interface View extends BaseView<Presenter> {

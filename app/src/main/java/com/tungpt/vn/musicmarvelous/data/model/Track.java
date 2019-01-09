@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.data.model;
+package com.tungpt.vn.musicmarvelous.data.model;
 
 public class Track {
     private int mId;

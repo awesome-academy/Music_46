@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.main.download;
+package com.tungpt.vn.musicmarvelous.ui.main.download;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.themo.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.R;
 
 public class DownloadFragment extends Fragment {
     @Nullable

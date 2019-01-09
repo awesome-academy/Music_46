@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.splash;
+package com.tungpt.vn.musicmarvelous.ui.splash;
 
 import android.Manifest;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.themo.musicmarvelous.ui.main.MainActivity;
+import com.tungpt.vn.musicmarvelous.ui.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity implements SplashContract.View {
     private static final int REQUEST_PERMISSION_STORAGE = 123;

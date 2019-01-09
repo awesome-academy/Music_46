@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.main.play;
+package com.tungpt.vn.musicmarvelous.ui.main.play;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -16,16 +16,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.constants.LoopMode;
-import com.example.themo.musicmarvelous.constants.ShuffleMode;
-import com.example.themo.musicmarvelous.constants.State;
-import com.example.themo.musicmarvelous.data.model.Track;
-import com.example.themo.musicmarvelous.data.repository.TrackRepository;
-import com.example.themo.musicmarvelous.data.source.TrackDataSource;
-import com.example.themo.musicmarvelous.service.TrackPlayerController;
-import com.example.themo.musicmarvelous.service.TrackPlayerService;
-import com.example.themo.musicmarvelous.utils.StringUtil;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.constants.LoopMode;
+import com.tungpt.vn.musicmarvelous.constants.ShuffleMode;
+import com.tungpt.vn.musicmarvelous.constants.State;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.data.repository.TrackRepository;
+import com.tungpt.vn.musicmarvelous.data.source.TrackDataSource;
+import com.tungpt.vn.musicmarvelous.service.TrackPlayerController;
+import com.tungpt.vn.musicmarvelous.service.TrackPlayerService;
+import com.tungpt.vn.musicmarvelous.utils.StringUtil;
 
 public class PlayTrackActivity extends AppCompatActivity implements PlayTrackContract.View,
         View.OnClickListener, TrackPlayerController.TrackInfoListener {

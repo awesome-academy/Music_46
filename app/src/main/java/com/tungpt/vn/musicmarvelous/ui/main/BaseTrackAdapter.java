@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.main;
+package com.tungpt.vn.musicmarvelous.ui.main;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
 
 import java.util.List;
 

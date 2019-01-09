@@ -1,7 +1,7 @@
-package com.example.themo.musicmarvelous.ui.main.favorite;
+package com.tungpt.vn.musicmarvelous.ui.main.favorite;
 
-import com.example.themo.musicmarvelous.data.model.Track;
-import com.example.themo.musicmarvelous.data.repository.TrackRepository;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.data.repository.TrackRepository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.main.personal;
+package com.tungpt.vn.musicmarvelous.ui.main.personal;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.ui.main.favorite.FavoriteFragment;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.ui.main.favorite.FavoriteFragment;
 
 public class PersonalFragment extends Fragment implements PersonalContract.View,
         View.OnClickListener {

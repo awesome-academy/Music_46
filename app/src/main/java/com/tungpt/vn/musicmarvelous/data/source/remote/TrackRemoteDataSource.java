@@ -1,8 +1,8 @@
-package com.example.themo.musicmarvelous.data.source.remote;
+package com.tungpt.vn.musicmarvelous.data.source.remote;
 
-import com.example.themo.musicmarvelous.data.model.Track;
-import com.example.themo.musicmarvelous.data.source.TrackDataSource;
-import com.example.themo.musicmarvelous.utils.StringUtil;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.data.source.TrackDataSource;
+import com.tungpt.vn.musicmarvelous.utils.StringUtil;
 
 public class TrackRemoteDataSource implements TrackDataSource.RemoteDataSource {
     private static TrackRemoteDataSource sInstance;

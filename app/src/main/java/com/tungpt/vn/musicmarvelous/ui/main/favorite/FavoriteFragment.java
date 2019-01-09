@@ -1,19 +1,18 @@
-package com.example.themo.musicmarvelous.ui.main.favorite;
+package com.tungpt.vn.musicmarvelous.ui.main.favorite;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.data.model.Track;
-import com.example.themo.musicmarvelous.ui.main.TrackListener;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.ui.main.TrackListener;
 
 import java.util.List;
 

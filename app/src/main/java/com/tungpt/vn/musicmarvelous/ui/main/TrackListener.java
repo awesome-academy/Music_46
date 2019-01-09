@@ -1,6 +1,6 @@
-package com.example.themo.musicmarvelous.ui.main;
+package com.tungpt.vn.musicmarvelous.ui.main;
 
-import com.example.themo.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
 
 import java.util.List;
 

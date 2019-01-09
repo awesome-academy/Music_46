@@ -1,8 +1,8 @@
-package com.example.themo.musicmarvelous.ui.main.genredetail;
+package com.tungpt.vn.musicmarvelous.ui.main.genredetail;
 
-import com.example.themo.musicmarvelous.BasePresenter;
-import com.example.themo.musicmarvelous.BaseView;
-import com.example.themo.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.BasePresenter;
+import com.tungpt.vn.musicmarvelous.BaseView;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
 
 import java.util.ArrayList;
 
