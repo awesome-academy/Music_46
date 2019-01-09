@@ -8,6 +8,10 @@ import com.example.themo.musicmarvelous.data.model.Track;
 public interface MainContract {
     interface View extends BaseView {
 
+        void showLoading();
+
+        void hideLoading();
+
         void updateStateInfo(@State int state);
 
         void updateTrackInfo(Track track);

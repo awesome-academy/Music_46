@@ -17,12 +17,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.themo.musicmarvelous.R;
 import com.example.themo.musicmarvelous.constants.Constants;
+import com.example.themo.musicmarvelous.constants.State;
 import com.example.themo.musicmarvelous.data.model.Track;
 import com.example.themo.musicmarvelous.service.TrackPlayerController;
 import com.example.themo.musicmarvelous.service.TrackPlayerService;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private TextView mTextViewTitle;
     private TextView mTextViewArtist;
     private Track mTrack;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +156,17 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 break;
         }
         return false;
+    }
+
+
+    @Override
+    public void showLoading() {
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoading() {
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override

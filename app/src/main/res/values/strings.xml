@@ -31,5 +31,9 @@
     <string name="channel_id">Channel_id_1</string>
     <string name="channel_name">My Channel</string>
     <string name="channel_description">Description Channel</string>
+    <string name="text_song_name">Song name</string>
+    <string name="text_artist">Artist</string>
+    <string name="error">Error</string>
+    <string name="msg_removed">Removed</string>
 
 </resources>
