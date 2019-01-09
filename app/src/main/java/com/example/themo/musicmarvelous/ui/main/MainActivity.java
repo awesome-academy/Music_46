@@ -32,7 +32,7 @@ import com.example.themo.musicmarvelous.ui.main.home.HomeFragment;
 import com.example.themo.musicmarvelous.ui.main.personal.PersonalFragment;
 import com.example.themo.musicmarvelous.ui.main.play.PlayTrackActivity;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View,
+public class MainActivity extends AppCompatActivity implements MainContract.View, View.OnClickListener,
         BottomNavigationView.OnNavigationItemSelectedListener {
     private MainContract.Presenter mPresenter;
     private ActionBar mActionBar;
@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private ImageView mImageViewTrack;
     private TextView mTextViewTitle;
     private TextView mTextViewArtist;
+    private ImageView mImageViewState;
+    private ImageView mImageViewPrevious;
+    private ImageView mImageViewNext;
     private Track mTrack;
     private ProgressBar mProgressBar;
 
@@ -50,7 +53,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mPresenter = new MainPresenter(this);
+        initComponent();
         initView();
+        setupEvents();
     }
 
     @Override
@@ -125,6 +130,24 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         navigation.setOnNavigationItemSelectedListener(this);
     }
 
+    public void initComponent(){
+        mImageViewState = findViewById(R.id.image_control_play_pause);
+        mImageViewNext = findViewById(R.id.image_control_next);
+        mImageViewPrevious = findViewById(R.id.image_control_previous);
+        mImageViewTrack = findViewById(R.id.image_control_track);
+        mTextViewTitle = findViewById(R.id.text_control_title);
+        mTextViewArtist = findViewById(R.id.text_control_artist);
+        mConstraintBottomControl = findViewById(R.id.constraint_bottom_control);
+
+    }
+
+    private void setupEvents() {
+        mImageViewState.setOnClickListener(this);
+        mImageViewPrevious.setOnClickListener(this);
+        mImageViewNext.setOnClickListener(this);
+        mConstraintBottomControl.setOnClickListener(this);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
@@ -171,7 +194,23 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void updateStateInfo(int state) {
-
+        switch (state) {
+            case State.PREPARE:
+                showLoading();
+                break;
+            case State.PLAYING:
+                hideLoading();
+                mImageViewState.setImageDrawable(getResources()
+                        .getDrawable(R.drawable.ic_pause_circle_filled_black));
+                break;
+            case State.PAUSE:
+                hideLoading();
+                mImageViewState.setImageDrawable(getResources()
+                        .getDrawable(R.drawable.ic_play_circle_filled_black));
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -218,5 +257,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
         transaction.commit();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
