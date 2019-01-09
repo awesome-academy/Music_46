@@ -178,7 +178,7 @@
         app:layout_constraintBottom_toBottomOf="@id/guide_line_second"
         app:layout_constraintEnd_toStartOf="@+id/image_download"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/image_timer"
+        app:layout_constraintStart_toEndOf="@+id/image_equalizer"
         app:layout_constraintTop_toTopOf="@id/guide_line_third"
         app:srcCompat="@drawable/ic_favorite_border" />
 
@@ -194,7 +194,7 @@
         app:srcCompat="@drawable/ic_download_gray" />
 
     <ImageView
-        android:id="@+id/image_timer"
+        android:id="@+id/image_equalizer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/guide_line_second"

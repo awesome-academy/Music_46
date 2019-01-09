@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.themo.musicmarvelous.R;
 import com.example.themo.musicmarvelous.constants.LoopMode;
@@ -21,6 +22,7 @@ import com.example.themo.musicmarvelous.constants.ShuffleMode;
 import com.example.themo.musicmarvelous.constants.State;
 import com.example.themo.musicmarvelous.data.model.Track;
 import com.example.themo.musicmarvelous.data.repository.TrackRepository;
+import com.example.themo.musicmarvelous.data.source.TrackDataSource;
 import com.example.themo.musicmarvelous.service.TrackPlayerController;
 import com.example.themo.musicmarvelous.service.TrackPlayerService;
 import com.example.themo.musicmarvelous.utils.StringUtil;
@@ -91,7 +93,93 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
 
     @Override
     public void onClick(View v) {
+        if (mTrackPlayerService == null) return;
+        switch (v.getId()) {
+            case R.id.image_track_state:
+                mTrackPlayerService.changeTrackState();
+                break;
+            case R.id.image_track_previous:
+                mTrackPlayerService.playPrevious();
+                break;
+            case R.id.image_track_next:
+                mTrackPlayerService.playNext();
+                break;
+            case R.id.image_loop:
+                mTrackPlayerService.changeLoopType();
+                break;
+            case R.id.image_shuffle:
+                mTrackPlayerService.changeShuffleState();
+                break;
+            case R.id.image_equalizer:
+                break;
+            case R.id.image_favorite:
+                handleAddToFavorite();
+                break;
+            case R.id.image_download:
+                handleDownload();
+                break;
+            case R.id.image_description:
+                handleShowDescription();
+                break;
+            case R.id.image_next_up:
+                handleShowNextUp();
+                break;
+            case R.id.image_close:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+    }
 
+    private void handleDownload() {
+    }
+
+    private void handleShowDescription() {
+        Toast.makeText(PlayTrackActivity.this, mCurrentTrack.getDescription(), Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleShowNextUp() {
+    }
+
+    private void handleAddToFavorite() {
+        if (mCurrentTrack == null) return;
+        mTrackRepository = TrackRepository.getInstance();
+        if (!mTrackRepository.isTrackInFavorite(mCurrentTrack)) {
+            mTrackRepository.addTrackToFavorite(mCurrentTrack,
+                    new TrackDataSource.OnQueryDatabaseListener() {
+                        @Override
+                        public void onQuerySuccess(String msg) {
+                            mImageFavorite.setImageResource(R.drawable.ic_favorite_filled);
+                            Toast.makeText(PlayTrackActivity.this,
+                                    R.string.msg_added, Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onQueryFailure(Exception e) {
+                            mImageFavorite.setImageResource(R.drawable.ic_favorite_border);
+                            Toast.makeText(PlayTrackActivity.this,
+                                    R.string.error, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } else {
+            mTrackRepository.deleteTrackFavorite(mCurrentTrack,
+                    new TrackDataSource.OnQueryDatabaseListener() {
+                        @Override
+                        public void onQuerySuccess(String msg) {
+                            mImageFavorite.setImageResource(R.drawable.ic_favorite_border);
+                            Toast.makeText(PlayTrackActivity.this,
+                                    R.string.msg_removed, Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onQueryFailure(Exception e) {
+                            mImageFavorite.setImageResource(R.drawable.ic_favorite_filled);
+                            Toast.makeText(PlayTrackActivity.this,
+                                    R.string.error, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 
     @Override
@@ -101,21 +189,25 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
 
     @Override
     public void onTrackChanged(Track track) {
-
+        mCurrentTrack = track;
+        updateTrackInfo();
     }
 
     @Override
     public void onStateChanged(int state) {
+        updateStateInfo(state);
 
     }
 
     @Override
-    public void onLoopChanged(int loopType) {
+    public void onLoopChanged(int loopMode) {
+        updateLoopMode(loopMode);
 
     }
 
     @Override
     public void onShuffleChanged(int shuffleMode) {
+        updateShuffleMode(shuffleMode);
 
     }
 
@@ -163,7 +255,7 @@ public class PlayTrackActivity extends AppCompatActivity implements PlayTrackCon
         mTextViewStart = findViewById(R.id.text_track_start);
         mTextViewEnd = findViewById(R.id.text_track_end);
         mSeekBar = findViewById(R.id.seek_bar_play_track);
-        mImageTimer = findViewById(R.id.image_timer);
+        mImageTimer = findViewById(R.id.image_equalizer);
         mImageFavorite = findViewById(R.id.image_favorite);
         mImageDownload = findViewById(R.id.image_download);
         mImageDescription = findViewById(R.id.image_description);
