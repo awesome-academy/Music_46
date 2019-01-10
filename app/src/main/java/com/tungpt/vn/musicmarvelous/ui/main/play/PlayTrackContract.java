@@ -1,7 +1,7 @@
-package com.example.themo.musicmarvelous.ui.main.play;
+package com.tungpt.vn.musicmarvelous.ui.main.play;
 
-import com.example.themo.musicmarvelous.BasePresenter;
-import com.example.themo.musicmarvelous.BaseView;
+import com.tungpt.vn.musicmarvelous.BasePresenter;
+import com.tungpt.vn.musicmarvelous.BaseView;
 
 public class PlayTrackContract {
     interface Presenter extends BasePresenter {

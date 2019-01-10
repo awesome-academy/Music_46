@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.main;
+package com.tungpt.vn.musicmarvelous.ui.main;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -22,15 +22,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.constants.Constants;
-import com.example.themo.musicmarvelous.constants.State;
-import com.example.themo.musicmarvelous.data.model.Track;
-import com.example.themo.musicmarvelous.service.TrackPlayerController;
-import com.example.themo.musicmarvelous.service.TrackPlayerService;
-import com.example.themo.musicmarvelous.ui.main.home.HomeFragment;
-import com.example.themo.musicmarvelous.ui.main.personal.PersonalFragment;
-import com.example.themo.musicmarvelous.ui.main.play.PlayTrackActivity;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.constants.Constants;
+import com.tungpt.vn.musicmarvelous.constants.State;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.service.TrackPlayerController;
+import com.tungpt.vn.musicmarvelous.service.TrackPlayerService;
+import com.tungpt.vn.musicmarvelous.ui.main.home.HomeFragment;
+import com.tungpt.vn.musicmarvelous.ui.main.personal.PersonalFragment;
+import com.tungpt.vn.musicmarvelous.ui.main.play.PlayTrackActivity;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View, View.OnClickListener,
         BottomNavigationView.OnNavigationItemSelectedListener {

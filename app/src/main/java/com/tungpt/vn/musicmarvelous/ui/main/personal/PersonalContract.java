@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.main.personal;
+package com.tungpt.vn.musicmarvelous.ui.main.personal;
 
 public interface PersonalContract {
     interface Presenter {

@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.splash;
+package com.tungpt.vn.musicmarvelous.ui.splash;
 
 public class SplashPresenter implements SplashContract.Presenter {
 

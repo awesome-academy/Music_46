@@ -1,7 +1,7 @@
-package com.example.themo.musicmarvelous.utils;
+package com.tungpt.vn.musicmarvelous.utils;
 
-import com.example.themo.musicmarvelous.BuildConfig;
-import com.example.themo.musicmarvelous.constants.Constants;
+import com.tungpt.vn.musicmarvelous.BuildConfig;
+import com.tungpt.vn.musicmarvelous.constants.Constants;
 
 import java.util.concurrent.TimeUnit;
 

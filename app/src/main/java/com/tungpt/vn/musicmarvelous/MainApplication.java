@@ -1,8 +1,8 @@
-package com.example.themo.musicmarvelous;
+package com.tungpt.vn.musicmarvelous;
 
 import android.app.Application;
 
-import com.example.themo.musicmarvelous.data.source.local.TrackLocalDataSource;
+import com.tungpt.vn.musicmarvelous.data.source.local.TrackLocalDataSource;
 
 public class MainApplication extends Application {
     @Override

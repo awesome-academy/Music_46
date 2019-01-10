@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.data.source.local;
+package com.tungpt.vn.musicmarvelous.data.source.local;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -6,11 +6,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.constants.Constants;
-import com.example.themo.musicmarvelous.data.model.Track;
-import com.example.themo.musicmarvelous.data.source.TrackDataSource;
-import com.example.themo.musicmarvelous.data.source.sqlite.TrackDatabaseHelper;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.constants.Constants;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.data.source.TrackDataSource;
+import com.tungpt.vn.musicmarvelous.data.source.sqlite.TrackDatabaseHelper;
 
 import java.io.File;
 import java.util.ArrayList;

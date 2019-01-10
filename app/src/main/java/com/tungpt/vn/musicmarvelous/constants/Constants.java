@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.constants;
+package com.tungpt.vn.musicmarvelous.constants;
 
 public class Constants {
     public static final String CLIENT_ID = "client_id=";

@@ -1,8 +1,8 @@
-package com.example.themo.musicmarvelous.data.source;
+package com.tungpt.vn.musicmarvelous.data.source;
 
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.constants.GenreEntity;
-import com.example.themo.musicmarvelous.data.model.Genre;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.constants.GenreEntity;
+import com.tungpt.vn.musicmarvelous.data.model.Genre;
 
 import java.util.ArrayList;
 import java.util.List;

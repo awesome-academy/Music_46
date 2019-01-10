@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.data.model;
+package com.tungpt.vn.musicmarvelous.data.model;
 
 import java.util.List;
 

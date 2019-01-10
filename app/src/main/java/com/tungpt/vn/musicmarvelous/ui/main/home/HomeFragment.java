@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.main.home;
+package com.tungpt.vn.musicmarvelous.ui.main.home;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,11 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.data.model.Genre;
-import com.example.themo.musicmarvelous.data.repository.GenreRepository;
-import com.example.themo.musicmarvelous.data.source.GenresLocalDataSource;
-import com.example.themo.musicmarvelous.ui.main.genredetail.GenreDetailFragment;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.data.model.Genre;
+import com.tungpt.vn.musicmarvelous.data.repository.GenreRepository;
+import com.tungpt.vn.musicmarvelous.data.source.GenresLocalDataSource;
+import com.tungpt.vn.musicmarvelous.ui.main.genredetail.GenreDetailFragment;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous;
+package com.tungpt.vn.musicmarvelous;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

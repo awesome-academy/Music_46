@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.themo.musicmarvelous">
+    package="com.tungpt.vn.musicmarvelous">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".MainApplication"
+        android:name="com.tungpt.vn.musicmarvelous.MainApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo_app"
         android:label="@string/app_name"
@@ -15,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name="com.tungpt.vn.musicmarvelous.ui.main.MainActivity" />
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name="com.tungpt.vn.musicmarvelous.ui.splash.SplashActivity"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
         </activity>
 
         <service
-            android:name=".service.TrackPlayerService"
+            android:name="com.tungpt.vn.musicmarvelous.service.TrackPlayerService"
             android:enabled="true" />
 
     </application>

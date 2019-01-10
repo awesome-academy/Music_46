@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.ui.main.home;
+package com.tungpt.vn.musicmarvelous.ui.main.home;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.data.model.Genre;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.data.model.Genre;
 
 import java.util.List;
 

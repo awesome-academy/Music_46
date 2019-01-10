@@ -1,9 +1,9 @@
-package com.example.themo.musicmarvelous.data.repository;
+package com.tungpt.vn.musicmarvelous.data.repository;
 
-import com.example.themo.musicmarvelous.data.model.Track;
-import com.example.themo.musicmarvelous.data.source.TrackDataSource;
-import com.example.themo.musicmarvelous.data.source.local.TrackLocalDataSource;
-import com.example.themo.musicmarvelous.data.source.remote.TrackRemoteDataSource;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.data.source.TrackDataSource;
+import com.tungpt.vn.musicmarvelous.data.source.local.TrackLocalDataSource;
+import com.tungpt.vn.musicmarvelous.data.source.remote.TrackRemoteDataSource;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.constants;
+package com.tungpt.vn.musicmarvelous.constants;
 
 import android.support.annotation.IntDef;
 

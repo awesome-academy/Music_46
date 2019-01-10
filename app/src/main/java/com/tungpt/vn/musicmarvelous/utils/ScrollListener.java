@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.utils;
+package com.tungpt.vn.musicmarvelous.utils;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

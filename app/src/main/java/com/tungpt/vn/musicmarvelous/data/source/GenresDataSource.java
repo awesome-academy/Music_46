@@ -1,6 +1,6 @@
-package com.example.themo.musicmarvelous.data.source;
+package com.tungpt.vn.musicmarvelous.data.source;
 
-import com.example.themo.musicmarvelous.data.model.Genre;
+import com.tungpt.vn.musicmarvelous.data.model.Genre;
 
 import java.util.List;
 

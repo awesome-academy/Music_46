@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.service;
+package com.tungpt.vn.musicmarvelous.service;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -20,13 +20,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.example.themo.musicmarvelous.R;
-import com.example.themo.musicmarvelous.constants.Constants;
-import com.example.themo.musicmarvelous.constants.LoopMode;
-import com.example.themo.musicmarvelous.constants.ShuffleMode;
-import com.example.themo.musicmarvelous.constants.State;
-import com.example.themo.musicmarvelous.data.model.Track;
-import com.example.themo.musicmarvelous.ui.main.play.PlayTrackActivity;
+import com.tungpt.vn.musicmarvelous.R;
+import com.tungpt.vn.musicmarvelous.constants.Constants;
+import com.tungpt.vn.musicmarvelous.constants.LoopMode;
+import com.tungpt.vn.musicmarvelous.constants.ShuffleMode;
+import com.tungpt.vn.musicmarvelous.constants.State;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.ui.main.play.PlayTrackActivity;
 
 import java.util.List;
 

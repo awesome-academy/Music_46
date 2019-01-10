@@ -1,4 +1,4 @@
-package com.example.themo.musicmarvelous.data.source.sqlite;
+package com.tungpt.vn.musicmarvelous.data.source.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
 
-import com.example.themo.musicmarvelous.constants.Constants;
-import com.example.themo.musicmarvelous.constants.TrackEntity;
-import com.example.themo.musicmarvelous.data.model.Track;
+import com.tungpt.vn.musicmarvelous.constants.Constants;
+import com.tungpt.vn.musicmarvelous.constants.TrackEntity;
+import com.tungpt.vn.musicmarvelous.data.model.Track;
 
 import java.util.ArrayList;
 import java.util.List;
