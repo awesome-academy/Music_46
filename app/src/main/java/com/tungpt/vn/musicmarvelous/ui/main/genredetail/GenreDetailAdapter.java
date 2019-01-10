@@ -137,4 +137,11 @@ public class GenreDetailAdapter extends RecyclerView.Adapter<GenreDetailAdapter.
         mTracks.addAll(tracks);
         notifyItemRangeInserted(startPosition, tracks.size());
     }
+
+    public void clearData() {
+        if (mTracks != null) {
+            mTracks.clear();
+            notifyDataSetChanged();
+        }
+    }
 }
