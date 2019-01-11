@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -31,9 +32,10 @@ import com.tungpt.vn.musicmarvelous.service.TrackPlayerService;
 import com.tungpt.vn.musicmarvelous.ui.main.home.HomeFragment;
 import com.tungpt.vn.musicmarvelous.ui.main.personal.PersonalFragment;
 import com.tungpt.vn.musicmarvelous.ui.main.play.PlayTrackActivity;
+import com.tungpt.vn.musicmarvelous.ui.main.search.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View, View.OnClickListener,
-        BottomNavigationView.OnNavigationItemSelectedListener {
+        BottomNavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
     private MainContract.Presenter mPresenter;
     private ActionBar mActionBar;
     private ConstraintLayout mConstraintBottomControl;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private ImageView mImageViewNext;
     private Track mTrack;
     private ProgressBar mProgressBar;
+    private SearchFragment mSearchFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         navigation.setOnNavigationItemSelectedListener(this);
     }
 
-    public void initComponent(){
+    public void initComponent() {
         mImageViewState = findViewById(R.id.image_control_play_pause);
         mImageViewNext = findViewById(R.id.image_control_next);
         mImageViewPrevious = findViewById(R.id.image_control_previous);
@@ -151,7 +154,24 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
-        return true;
+        MenuItem searchMenu = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) searchMenu.getActionView();
+        searchView.setQueryHint(getString(R.string.search_hint));
+        searchView.setOnQueryTextListener(this);
+        searchMenu.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                openSearchFragment();
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                closeSearchFragment();
+                return true;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -249,6 +269,35 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        if (mSearchFragment == null) return false;
+        mSearchFragment.submitQueryText(query);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
+    }
+
+    private void openSearchFragment() {
+        mSearchFragment = SearchFragment.newInstance();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.frame_container, mSearchFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    private void closeSearchFragment() {
+        getSupportFragmentManager().popBackStack();
+    }
+
     private void gotoPlayTrackActivity() {
         startActivity(PlayTrackActivity.getIntent(this));
     }
@@ -257,10 +306,5 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
         transaction.commit();
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 }

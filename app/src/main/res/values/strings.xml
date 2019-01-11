@@ -35,5 +35,6 @@
     <string name="text_artist">Artist</string>
     <string name="error">Error</string>
     <string name="msg_removed">Removed</string>
+    <string name="search_hint">Search track...</string>
 
 </resources>

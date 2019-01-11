@@ -16,6 +16,10 @@
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/color_accent</item>
+    </style>
+
     <style name="ProgressBarControlStyle">
         <item name="colorAccent">#8f8f8f</item>
     </style>
