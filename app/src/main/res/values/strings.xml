@@ -36,5 +36,6 @@
     <string name="error">Error</string>
     <string name="msg_removed">Removed</string>
     <string name="search_hint">Search track...</string>
+    <string name="error_permission_denied">Permission Denied</string>
 
 </resources>
