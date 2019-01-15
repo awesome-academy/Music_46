@@ -26,4 +26,5 @@ public class Constants {
     public static final String STREAM = "stream";
     public static final int DEFAULT_ITEM_SIZE = 72;
     public static final int DEFAULT_NOTIFY_SIZE = 100;
+    public static final String DOWNLOAD_DIRECTORY = "Music 46";
 }
